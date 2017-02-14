@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import StarReducer from './reducer_star';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  stellarData: StarReducer
 });
 
 export default rootReducer;

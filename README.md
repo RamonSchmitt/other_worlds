@@ -1,6 +1,6 @@
-# ReduxSimpleStarter
+# Other Worlds
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+An app to find out which planets revolve around distant stars.
 
 ###Getting Started###
 
