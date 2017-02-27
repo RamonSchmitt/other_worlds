@@ -8,9 +8,6 @@ export function fetchData(star) {
   const url = `${ROOT_URL}&where=pl_hostname like '${star}'`;
   const request = axios.get(url);
 
- // console.log(url);
- // console.log('Request:', request);
-
   return {
     type: FETCH_DATA,
     payload: request

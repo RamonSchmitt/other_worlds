@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 class StarSystem extends Component {
   renderStarSystem(starsystem) {
     const name = starsystem[0].pl_hostname;
-    const planets = starsystem[0].pl_name;
-    const distance = starsystem[0].st_dist;
-    const year = starsystem[0].pl_orbper;
+    const distance = starsystem[0].st_dist * 3.26163344;
+    let planets = [];
+
+    starsystem.map((planet, index) => {
+      planets.push(planet.pl_name);
+    })
 
     return (
       <tr key={name}>
         <td>{name}</td>
-        <td>{planets}</td>
         <td>{distance}</td>
-        <td>{year}</td>
+        <td>{planets.join()}</td>
       </tr>
     );
   }
@@ -24,9 +26,8 @@ class StarSystem extends Component {
         <thead>
           <tr>
             <th>Star</th>
-            <th>Planets</th>
-            <th>Distance from the Sun in parsecs</th>
-            <th>year</th>
+            <th>Distance from the Sun in lightyears</th>
+            <th>planets</th>
           </tr>
         </thead>
         <tbody>
