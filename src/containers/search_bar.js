@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchData } from '../actions/index';
 
+import AutoComplete from 'material-ui/AutoComplete';
+
+const planets = [
+  "TRAPPIST-1",
+  "Proxima Cen",
+  "47 UMa",
+  "51 Peg",
+  "55 Cnc"
+];
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +24,10 @@ class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    this.setState({ term: event.target.value });
+    console.log(event);
+    this.setState({ term: event });
+    console.log(this.state);
+    // this.setState({ term: event.target.value });
   }
 
   onFormSubmit(event) {
@@ -26,15 +39,16 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group">
-        <input
-          placeholder="search for a star"
-          className="form-control"
-          value={this.state.term}
-          onChange={this.onInputChange} />
-        <span className="input-group-btn">
-          <button type="submit" className="btn btn-secondary">Submit</button>
-        </span>
+      <form onSubmit={this.onFormSubmit} >
+        <AutoComplete
+          floatingLabelText="search for a star"
+          filter={AutoComplete.fuzzyFilter}
+          dataSource={planets}
+          maxSearchResults={5}
+          fullWidth={true}
+          searchText={this.state.term}
+          onUpdateInput={this.onInputChange}
+        />
       </form>
     );
   }
