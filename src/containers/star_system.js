@@ -17,7 +17,7 @@ class StarSystem extends Component {
       <TableRow key={name}>
         <TableRowColumn>{name}</TableRowColumn>
         <TableRowColumn>{distance}</TableRowColumn>
-        <TableRowColumn>{planets.join()}</TableRowColumn>
+        <TableRowColumn>{planets.join(", ")}</TableRowColumn>
       </TableRow>
     );
   }
@@ -26,16 +26,15 @@ class StarSystem extends Component {
     return (
       <div>
         <SearchBar />
-        {console.log(this.props.stellarData)}
         <Table>
-          <TableHeader>
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Star</TableHeaderColumn>
               <TableHeaderColumn>Distance from the Sun in lightyears</TableHeaderColumn>
-              <TableHeaderColumn>planets</TableHeaderColumn>
+              <TableHeaderColumn>Planets</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody displayRowCheckbox={false}>
             {this.props.stellarData.map(this.renderStarSystem)}
           </TableBody>
         </Table>

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { fetchData } from '../actions/index';
 
 import AutoComplete from 'material-ui/AutoComplete';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const planets = [
   "TRAPPIST-1",
@@ -12,6 +13,10 @@ const planets = [
   "51 Peg",
   "55 Cnc"
 ];
+
+const style = {
+  margin: 12,
+};
 
 class SearchBar extends Component {
   constructor(props) {
@@ -24,10 +29,7 @@ class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event);
     this.setState({ term: event });
-    console.log(this.state);
-    // this.setState({ term: event.target.value });
   }
 
   onFormSubmit(event) {
@@ -45,10 +47,11 @@ class SearchBar extends Component {
           filter={AutoComplete.fuzzyFilter}
           dataSource={planets}
           maxSearchResults={5}
-          fullWidth={true}
+          fullWidth={false}
           searchText={this.state.term}
           onUpdateInput={this.onInputChange}
         />
+        <RaisedButton label="search" primary={true} type="submit" style={style}/>
       </form>
     );
   }

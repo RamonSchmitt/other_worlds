@@ -6,7 +6,8 @@ export const FETCH_DATA = 'FETCH_DATA' // keep action types consistend between a
 
 export function fetchData(star) {
   const url = `${ROOT_URL}&where=pl_hostname like '${star}'`;
-  const request = axios.get(url);
+  const request = axios.request({ url: url,
+                                  method: 'get' });
 
   return {
     type: FETCH_DATA,

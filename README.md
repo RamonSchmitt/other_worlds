@@ -7,7 +7,7 @@ An app to find out which planets revolve around distant stars.
 
 ```
 	> git clone RamonSchmitt@bitbucket.org/RamonSchmitt/otherworlds.git
-	> cd other-world
+	> cd other-worlds
 	> npm install
 	> npm start
 ```
