@@ -13,3 +13,9 @@ Using ReactJS, Redux and Material-UI.
 	> npm install
 	> npm start
 ```
+
+## Todo
+
+• auto complete
+• progress indicator
+• planet data
