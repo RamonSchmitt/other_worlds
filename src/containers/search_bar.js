@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchData } from '../actions/index';
-
 import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { fetchData } from '../actions/index';
+
 const planets = [
-  "TRAPPIST-1",
-  "Proxima Cen",
-  "47 UMa",
-  "51 Peg",
-  "55 Cnc"
+  'TRAPPIST-1',
+  'Proxima Cen',
+  '47 UMa',
+  '51 Peg',
+  '55 Cnc',
 ];
 
 const style = {
@@ -36,7 +36,7 @@ class SearchBar extends Component {
     event.preventDefault();
 
     this.props.fetchData(this.state.term);
-    this.setState({ term: ''});
+    this.setState({ term: '' });
   }
 
   render() {
@@ -51,7 +51,7 @@ class SearchBar extends Component {
           searchText={this.state.term}
           onUpdateInput={this.onInputChange}
         />
-        <RaisedButton label="search" primary={true} type="submit" style={style}/>
+        <RaisedButton label="search" primary type="submit" style={style} />
       </form>
     );
   }

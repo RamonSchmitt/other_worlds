@@ -4,7 +4,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
-import SearchBar from '../containers/search_bar';
 import StarSystem from '../containers/star_system';
 
 injectTapEventPlugin();
