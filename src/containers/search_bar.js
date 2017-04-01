@@ -6,14 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { fetchData } from '../actions/index';
 
-const planets = [
-  'TRAPPIST-1',
-  'Proxima Cen',
-  '47 UMa',
-  '51 Peg',
-  '55 Cnc',
-];
-
 const style = {
   margin: 12,
 };
@@ -22,14 +14,27 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '' };
+    this.state = {
+      term: '',
+      stars: [],
+    };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(event) {
-    this.setState({ term: event });
+    this.setState({
+      term: event,
+      stars: [
+        'TRAPPIST-1',
+        'Proxima Cen',
+        '47 UMa',
+        '51 Peg',
+        '55 Cnc',
+        'Kepler-22',
+      ],
+    });
   }
 
   onFormSubmit(event) {
@@ -45,8 +50,8 @@ class SearchBar extends Component {
         <AutoComplete
           floatingLabelText="search for a star"
           filter={AutoComplete.fuzzyFilter}
-          dataSource={planets}
-          maxSearchResults={5}
+          dataSource={this.state.stars}
+          maxSearchResults={10}
           fullWidth={false}
           searchText={this.state.term}
           onUpdateInput={this.onInputChange}

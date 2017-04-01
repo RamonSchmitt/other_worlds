@@ -5,6 +5,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 import StarSystem from '../containers/star_system';
+import SearchBar from '../containers/search_bar';
+
 
 injectTapEventPlugin();
 
@@ -12,7 +14,10 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        <StarSystem />
+        <div>
+          <SearchBar />
+          <StarSystem />
+        </div>
       </MuiThemeProvider>
     );
   }
