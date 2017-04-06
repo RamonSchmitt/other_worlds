@@ -1,9 +1,13 @@
-import { FETCH_DATA } from '../actions/index';
+import { FETCH_DATA, FETCH_STARS } from '../actions/index';
 
-export default function (state = [], action) {
+const INITIAL_STATE = { stellarData: [], starList: [] };
+
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_DATA:
-      return [action.payload.data];
+      return { ...state, stellarData: action.payload.data };
+    case FETCH_STARS:
+      return { ...state, starList: action.payload.data };
     default:
       return state;
   }

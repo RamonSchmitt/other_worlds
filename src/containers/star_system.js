@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class StarSystem extends Component {
-  renderStarSystem(starsystem) {
-    const name = starsystem[0].pl_hostname;
-    const distance = Math.round(starsystem[0].st_dist * 3.26163344 * 100) / 100;
+  renderStarSystem(starSystem) {
+    const name = starSystem.pl_hostname;
+    const distance = Math.round(starSystem.st_dist * 3.26163344 * 100) / 100;
 
     return (
-      <div key={starsystem.id}>
+      <div key={starSystem.id}>
         <p>star</p>
         <h1>{name}</h1>
         <p>distance from solar system</p>
@@ -17,33 +17,33 @@ class StarSystem extends Component {
   }
 
   renderPlanetList(planets) {
-    const planetsSorted = planets.sort((a, b) =>
-      (a.pl_name > b.pl_name) ? 1 : ((b.pl_name > a.pl_name) ? -1 : 0),
-    );
+    // const planetsSorted = planets.sort((a, b) =>
+    //   (a.pl_name > b.pl_name) ? 1 : ((b.pl_name > a.pl_name) ? -1 : 0),
+    // );
 
-    return planetsSorted.map(planet =>
-      <li key={planet.id}>
-        {planet.pl_name}
-      </li>,
-    );
+    return (
+      <li key={planets.id}>
+        {planets.pl_name}
+      </li>
+    )
   }
 
   render() {
     return (
       <div>
         <div>
-          {this.props.stellarData.map(this.renderStarSystem)}
-          <ul>
-            {this.props.stellarData.map(this.renderPlanetList)}
-          </ul>
+          {this.props.stellarData.stellarData.map(this.renderStarSystem)}
         </div>
+        <ul>
+          {this.props.stellarData.stellarData.map(this.renderPlanetList)}
+        </ul>
       </div>
     );
   }
 }
 
-function mapStateToProps({ stellarData }) {
-  return { stellarData };
+function mapStateToProps(state) {
+  return state;
 }
 
 export default connect(mapStateToProps)(StarSystem);
