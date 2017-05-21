@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
+import _ from 'lodash';
 
 import { fetchData, fetchStars } from '../actions/index';
 
@@ -40,8 +41,10 @@ class SearchBar extends Component {
   }
 
   dataSource(stars) {
+    const uniqStars = _.uniqBy(stars, 'pl_hostname');
     const starList = [];
-    stars.map(star => starList.push(star.pl_hostname));
+
+    uniqStars.map(star => starList.push(star.pl_hostname));
     return starList;
   }
 
@@ -51,7 +54,7 @@ class SearchBar extends Component {
         <AutoComplete
           floatingLabelText="search for a star"
           filter={AutoComplete.fuzzyFilter}
-          dataSource={this.dataSource(this.props.stellarData.starList)}
+          dataSource={this.dataSource(this.props.otherWorlds.starList)}
           maxSearchResults={10}
           fullWidth={false}
           searchText={this.state.term}

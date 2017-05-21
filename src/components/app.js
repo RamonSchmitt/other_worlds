@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -10,15 +10,15 @@ import SearchBar from '../containers/search_bar';
 
 injectTapEventPlugin();
 
-export default class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        <div>
-          <SearchBar />
-          <StarSystem />
-        </div>
-      </MuiThemeProvider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <div>
+        <SearchBar />
+        <StarSystem />
+      </div>
+    </MuiThemeProvider>
+  );
+};
+
+export default App;
