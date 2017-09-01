@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
-import Lens from 'material-ui/svg-icons/image/lens';
-import { cyan500 } from 'material-ui/styles/colors';
 
 class Planets extends Component {
-  content(planets) {
-    return (
-      <li key={planets.pl_name}>
-        <a href="#">
-          <Lens color={cyan500} />
-        </a>
-      </li>
-    );
+  content() {
+    if (this.props.stellarData) {
+      const planetSystem = this.props.stellarData;
+
+      return planetSystem.map((planet) => {
+        return (
+          <li key={planet.pl_name}>
+            <h1>{planet.pl_name}</h1>
+            <p>year</p>
+            <h1>{planet.pl_orbper}</h1>
+          </li>
+        );
+      });
+    }
+    return <h1>-</h1>;
   }
 
   render() {
-    if (this.props.stellarData) {
-      return (
-        <div>
-          <p>planet</p>
-          <ul>
-            {this.props.stellarData.map(this.content)}
-          </ul>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <p>known planets</p>
+        {}
+        <ul>
+          {this.content()}
+        </ul>
+      </div>
+    );
   }
 }
 

@@ -15,10 +15,12 @@ class StarSystem extends Component {
   }
 
   render() {
+    const stellarData = this.props.otherWorlds.stellarData;
+
     return (
       <div>
-        <Star stellarData={this.props.otherWorlds.stellarData}/>
-        <Planets  stellarData={this.props.otherWorlds.stellarData}/>
+        <Star stellarData={stellarData} />
+        <Planets stellarData={stellarData} />
       </div>
     );
   }

@@ -1,6 +1,16 @@
 body {
   font-family: 'Roboto', sans-serif;
   text-align: center;
+  background-color: #eee;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 24px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px #aaa;
 }
 
 h1 {

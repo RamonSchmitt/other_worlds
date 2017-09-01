@@ -1,6 +1,12 @@
-import { FETCH_DATA, FETCH_STARS } from '../actions/index';
+import {
+  FETCH_DATA,
+  FETCH_STARS,
+} from '../actions/index';
 
-const INITIAL_STATE = { stellarData: [], starList: [] };
+const INITIAL_STATE = {
+  stellarData: [],
+  starList: [],
+};
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
