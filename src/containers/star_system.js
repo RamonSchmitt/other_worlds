@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Star from '../components/star';
 import Planets from '../components/planets';
-
+import Divider from 'material-ui/Divider';
 
 class StarSystem extends Component {
   renderPlanetList(planets) {
@@ -20,6 +20,7 @@ class StarSystem extends Component {
     return (
       <div>
         <Star stellarData={stellarData} />
+        <Divider />
         <Planets stellarData={stellarData} />
       </div>
     );
