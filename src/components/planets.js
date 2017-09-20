@@ -6,25 +6,23 @@ import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 class Planets extends Component {
   content() {
     if (this.props.stellarData.length > 0) {
-      const planetSystem = this.props.stellarData;
+      let i = 0;
+      const { pl_name, pl_orbper } = this.props.stellarData[i];
 
-      return planetSystem.map((planet) => {
-        return (
-          <li key={planet.pl_name}>
-            <h1>{planet.pl_name}</h1>
-            <p>year</p>
-            <h1>{planet.pl_orbper.toFixed(0)} earth days</h1>
-          </li>
-        );
-      });
+      return (
+        <div>
+          <h1>{pl_name}</h1>
+          <p>year</p>
+          <h1>{pl_orbper.toFixed(0)} earth days</h1>
+        </div>
+      );
     }
 
     return (
-      <li>
-        <h1>-</h1>
-      </li>
+      <h1>-</h1>
     );
   }
+
 
   render() {
     return (
@@ -37,9 +35,7 @@ class Planets extends Component {
 
         <div style={{ flexGrow: 1 }}>
           <p>known planets</p>
-          <ul>
-            {this.content()}
-          </ul>
+          {this.content()}
         </div>
 
         <div style={{ flexGrow: 1 }}>

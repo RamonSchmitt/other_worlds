@@ -1,7 +1,7 @@
 import {
   FETCH_DATA,
   FETCH_STARS,
-} from '../actions/index';
+} from '../actions/types';
 
 const INITIAL_STATE = {
   stellarData: [],
