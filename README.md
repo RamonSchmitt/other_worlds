@@ -2,7 +2,7 @@
 
 An app to find out which planets revolve around distant stars.
 
-Using ReactJS, Redux and Material-UI.
+Using ReactJS, Redux, lodash and Material-UI.
 
 ## Getting Started
 

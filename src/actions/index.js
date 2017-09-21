@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   FETCH_DATA,
   FETCH_STARS,
+  NEXT_PLANET,
 } from '../actions/types';
 
 const ROOT_URL = 'http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json';
@@ -31,5 +32,11 @@ export function fetchStars() {
   return {
     type: FETCH_STARS,
     payload: request,
+  };
+}
+
+export function nextPlanet() {
+  return {
+    type: NEXT_PLANET,
   };
 }
