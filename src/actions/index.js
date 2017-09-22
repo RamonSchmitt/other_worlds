@@ -3,6 +3,8 @@ import {
   FETCH_DATA,
   FETCH_STARS,
   NEXT_PLANET,
+  PREV_PLANET,
+  NEXT_DISABLED,
 } from '../actions/types';
 
 const ROOT_URL = 'http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json';
@@ -38,5 +40,11 @@ export function fetchStars() {
 export function nextPlanet() {
   return {
     type: NEXT_PLANET,
+  };
+}
+
+export function prevPlanet() {
+  return {
+    type: PREV_PLANET,
   };
 }

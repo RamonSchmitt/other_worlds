@@ -5,7 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 
-import { nextPlanet } from '../actions/index';
+import { nextPlanet, prevPlanet, nextDisabled } from '../actions/index';
 
 class Planets extends Component {
   content() {
@@ -26,16 +26,33 @@ class Planets extends Component {
     );
   }
 
-  next() {
-    nextPlanet();
+  nextEnable = () => {
+    if (this.props.stellarData.length > 1) {
+      return false;
+    }
+    return true;
   }
 
+  next = () => {
+    this.props.nextPlanet();
+  }
+
+  prevEnable = () => {
+    if (this.props.selectedPlanet === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  prev = () => {
+    this.props.prevPlanet();
+  }
 
   render() {
     return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ flexGrow: 1 }}>
-          <FloatingActionButton disabled={true}>
+          <FloatingActionButton disabled={this.prevEnable()} onClick={this.prev}>
             <ChevronLeft />
           </FloatingActionButton>
         </div>
@@ -46,7 +63,7 @@ class Planets extends Component {
         </div>
 
         <div style={{ flexGrow: 1 }}>
-          <FloatingActionButton disabled={false} onClick={this.next}>
+          <FloatingActionButton disabled={this.nextEnable()} onClick={this.next}>
             <ChevronRight />
           </FloatingActionButton>
         </div>
@@ -60,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ nextPlanet }, dispatch);
+  return bindActionCreators({ nextPlanet, prevPlanet, nextDisabled }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Planets);
