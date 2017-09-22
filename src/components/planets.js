@@ -27,10 +27,10 @@ class Planets extends Component {
   }
 
   nextEnable = () => {
-    if (this.props.stellarData.length > 1) {
-      return false;
+    if (this.props.selectedPlanet === this.props.stellarData.length - 1) {
+      return true;
     }
-    return true;
+    return false;
   }
 
   next = () => {
@@ -58,7 +58,7 @@ class Planets extends Component {
         </div>
 
         <div style={{ flexGrow: 1 }}>
-          <p>known planets</p>
+          <p>{this.props.stellarData.length} known planets</p>
           {this.content()}
         </div>
 
