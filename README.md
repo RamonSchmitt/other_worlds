@@ -16,6 +16,4 @@ Using ReactJS, Redux, lodash and Material-UI.
 
 ## Todo
 
-* progress indicator
-* planet data
 * tests

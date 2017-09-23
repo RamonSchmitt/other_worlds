@@ -15,7 +15,7 @@ export default function (state = INITIAL_STATE, action) {
   // console.log(action);
   switch (action.type) {
     case FETCH_DATA:
-      return { ...state, stellarData: action.payload.data };
+      return { ...state, stellarData: action.payload.data, selectedPlanet: 0 };
     case FETCH_STARS:
       return { ...state, starList: action.payload.data };
     case NEXT_PLANET:
