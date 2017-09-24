@@ -5,7 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 
-import { nextPlanet, prevPlanet, nextDisabled } from '../actions/index';
+import { nextPlanet, prevPlanet } from '../actions/index';
 
 class Planets extends Component {
   content() {
@@ -26,22 +26,8 @@ class Planets extends Component {
     );
   }
 
-  nextEnable = () => {
-    if (this.props.selectedPlanet === this.props.stellarData.length - 1) {
-      return true;
-    }
-    return false;
-  }
-
   next = () => {
     this.props.nextPlanet();
-  }
-
-  prevEnable = () => {
-    if (this.props.selectedPlanet === 0) {
-      return true;
-    }
-    return false;
   }
 
   prev = () => {
@@ -49,21 +35,31 @@ class Planets extends Component {
   }
 
   render() {
+    const selectedPlanet = this.props.selectedPlanet;
+    const totalPlanets = this.props.stellarData.length;
     return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ flexGrow: 1 }}>
-          <FloatingActionButton disabled={this.prevEnable()} onClick={this.prev}>
+          <FloatingActionButton
+            disabled={selectedPlanet === 0}
+            onClick={this.prev}
+          >
             <ChevronLeft />
           </FloatingActionButton>
         </div>
 
         <div style={{ flexGrow: 1 }}>
-          <p>{this.props.stellarData.length} known planets</p>
+          <p>{totalPlanets} known
+            {totalPlanets > 1 ? ' planets' : ' planet'}
+          </p>
           {this.content()}
         </div>
 
         <div style={{ flexGrow: 1 }}>
-          <FloatingActionButton disabled={this.nextEnable()} onClick={this.next}>
+          <FloatingActionButton
+            disabled={selectedPlanet + 1 === totalPlanets || totalPlanets === 0}
+            onClick={this.next}
+          >
             <ChevronRight />
           </FloatingActionButton>
         </div>
@@ -77,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ nextPlanet, prevPlanet, nextDisabled }, dispatch);
+  return bindActionCreators({ nextPlanet, prevPlanet }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Planets);

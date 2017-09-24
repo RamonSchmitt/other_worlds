@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Divider from 'material-ui/Divider';
+import _ from 'lodash';
 
 import Star from '../components/star';
 import Planets from '../components/planets';
 
 class StarSystem extends Component {
-  renderPlanetList(planets) {
-    return (
-      <li key={planets.id}>
-        {planets.pl_name}
-      </li>
-    );
-  }
-
   render() {
-    const { stellarData, selectedPlanet } = this.props.otherWorlds;
+    const { selectedPlanet } = this.props.otherWorlds;
+    let { stellarData } = this.props.otherWorlds;
+    stellarData = _.sortBy(stellarData, 'pl_orbper');
 
     return (
       <div>
