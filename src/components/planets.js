@@ -26,14 +26,6 @@ class Planets extends Component {
     );
   }
 
-  next = () => {
-    this.props.nextPlanet();
-  }
-
-  prev = () => {
-    this.props.prevPlanet();
-  }
-
   render() {
     const selectedPlanet = this.props.selectedPlanet;
     const totalPlanets = this.props.stellarData.length;
@@ -42,7 +34,7 @@ class Planets extends Component {
         <div style={{ flexGrow: 1 }}>
           <FloatingActionButton
             disabled={selectedPlanet === 0}
-            onClick={this.prev}
+            onClick={this.props.prevPlanet}
           >
             <ChevronLeft />
           </FloatingActionButton>
@@ -58,7 +50,7 @@ class Planets extends Component {
         <div style={{ flexGrow: 1 }}>
           <FloatingActionButton
             disabled={selectedPlanet + 1 === totalPlanets || totalPlanets === 0}
-            onClick={this.next}
+            onClick={this.props.nextPlanet}
           >
             <ChevronRight />
           </FloatingActionButton>
